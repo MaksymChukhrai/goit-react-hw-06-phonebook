@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux'; // Імпорт useDispatch
-
 import { addContact } from '../redux/contactsSlice'; // Імпорт екшен addContact
 
 const ContactForm = () => {
@@ -48,8 +46,6 @@ const ContactForm = () => {
   );
 };
 
-ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
-};
+
 
 export default ContactForm;

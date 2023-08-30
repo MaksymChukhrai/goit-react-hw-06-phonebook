@@ -1,13 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeContact } from '../redux/contactsSlice'; // Импорт экшена removeContact
 
-const ContactsList = ({ contacts, onDelete }) => {
+const ContactsList = () => {
+  const dispatch = useDispatch(); // Получаем функцию dispatch
+
+  // Используем useSelector для доступа к списку контактов из Redux-стейта
+  const contacts = useSelector(state => state.contacts.list);
+
+  const handleDelete = (contactId) => {
+    // Используем dispatch для вызова экшена removeContact с передачей id контакта
+    dispatch(removeContact(contactId));
+  };
+  
+  // Ранее рендеринг не работал именно из за этого компонента. useDispatch, useSelector не проходил.
+  
   return (
     <ul className="contact_list">
       {contacts.map(contact => (
         <li key={contact.id}>
           {contact.name}: {contact.number}{' '}
-          <button className="delete-btn" onClick={() => onDelete(contact.id)}>
+          <button className="delete-btn" onClick={() => handleDelete(contact.id)}>
             Delete
           </button>
         </li>
@@ -16,15 +29,6 @@ const ContactsList = ({ contacts, onDelete }) => {
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
+
 
 export default ContactsList;
