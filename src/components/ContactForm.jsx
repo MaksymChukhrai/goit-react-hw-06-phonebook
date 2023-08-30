@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux'; // Імпортуйте useDispatch
+import { useDispatch } from 'react-redux'; // Імпорт useDispatch
 
-import { addContact } from '../redux/contactsSlice'; // Імпортуйте екшен addContact
+import { addContact } from '../redux/contactsSlice'; // Імпорт екшен addContact
 
 const ContactForm = () => {
-  const dispatch = useDispatch(); // Отримайте функцію dispatch
+  const dispatch = useDispatch(); // Отримання функції dispatch
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
