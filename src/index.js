@@ -10,15 +10,13 @@ import './index.css';
 const rootElement = document.getElementById('root');
 
 createRoot(rootElement).render(
-  <React.StrictMode>
-   
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
-
-  </React.StrictMode>
+    <React.StrictMode>
+         <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <App />
+            </PersistGate>
+          </Provider>
+    </React.StrictMode>
 );
 
 

@@ -15,16 +15,18 @@ code {
 
 .book_section {
   display: flex;
-  align-items: center;
+  /* align-items: self-start; */
   flex-direction: column;
   margin-top: 60px;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 
 .contact_form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-left: -15px;
+
   align-items: flex-start;
 }
 

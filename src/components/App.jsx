@@ -4,20 +4,40 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import { setFilter } from '../redux/filtersSlice'; // Импортируем экшен setFilter
+import useLocalStorage from '../utils/useLocalStorage'; // Импорт хука useLocalStorage
+
+import { addContact, removeContact } from '../redux/contactsSlice';
+
+
 
 const App = () => {
+  const [contacts, setContacts] = useLocalStorage('contacts', []); // Используем хук useLocalStorage
+
+
+
   const filter = useSelector(state => state.contacts.filter); // Получаем значение фильтра из Redux
   const dispatch = useDispatch(); // Получаем функцию dispatch
+
+  const handleAddContact = (contact) => {
+    setContacts([...contacts, contact]); // Обновляем состояние контактов и сохраняем в Local Storage
+    dispatch(addContact(contact));
+  };
+
+  const handleDeleteContact = (contactId) => {
+    const updatedContacts = contacts.filter(contact => contact.id !== contactId);
+    setContacts(updatedContacts); // Обновляем состояние контактов и сохраняем в Local Storage
+    dispatch(removeContact(contactId));
+  };
   return (
 
     <div className="book_section">
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAddContact={handleAddContact}/>
       <div className="contact_form">
         <h2>Contacts</h2>
         <h3>Find contacts by name</h3>
-        <Filter value={filter} onChange={value => dispatch(setFilter(value))} />
-        <ContactList />
+        <Filter  />
+        <ContactList contacts={contacts} onDelete={handleDeleteContact} />
       </div>
     </div>
   );
