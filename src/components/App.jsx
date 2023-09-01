@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch  } from 'react-redux'; // Импортируем useSelector для доступа к состоянию из Redux
+import { useDispatch  } from 'react-redux'; // Импортируем useSelector для доступа к состоянию из Redux
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
-import { setFilter } from '../redux/filtersSlice'; // Импортируем экшен setFilter
+// import { setFilter } from '../redux/filtersSlice'; // Импортируем экшен setFilter
 import useLocalStorage from '../utils/useLocalStorage'; // Импорт хука useLocalStorage
 
 import { addContact, removeContact } from '../redux/contactsSlice';
@@ -14,7 +14,7 @@ const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', []); // Используем хук useLocalStorage
   
   // const filter = useSelector(state => state.filters.filter); // Получаем значение фильтра из Redux
-  const filter = useSelector(state => state.filter);
+  // const filter = useSelector(state => state.filter);
   const dispatch = useDispatch(); // Получаем функцию dispatch
   
   const handleAddContact = (contact) => {
