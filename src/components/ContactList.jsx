@@ -13,9 +13,7 @@ const ContactsList = () => {
     dispatch(removeContact(contactId));
   };
   
-  // Ранее рендеринг не работал именно из за этого компонента. useDispatch, useSelector не проходил.
-  
-  return (
+    return (
     <ul className="contact_list">
       {contacts.map(contact => (
         <li key={contact.id}>

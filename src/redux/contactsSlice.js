@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import useLocalStorage from '../utils/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
-
-
 
 const initialContacts = [
   { id: uuidv4(), name: 'Rosie Simpson', number: '459-12-56' },
@@ -27,7 +24,6 @@ const contactsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
-    // Добавленные действия
     updateContact: (state, action) => {
       const updatedContact = action.payload;
       const index = state.list.findIndex(contact => contact.id === updatedContact.id);
@@ -39,7 +35,7 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const { addContact, removeContact, setFilter } = contactsSlice.actions;
+export const { addContact, removeContact, setFilter, updateContact }  = contactsSlice.actions;
 
 export default contactsSlice.reducer;
 
