@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -7,21 +7,16 @@ import LocalStorageInitializer from './LocalStorageInitializer';
 import { addContact, removeContact } from '../redux/contactsSlice';
 
 const App = () => {
-  const contacts = useSelector((state) => state.contacts.list);
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.list);
 
-  const handleAddContact = (contact) => {
+  const handleAddContact = contact => {
     dispatch(addContact(contact));
   };
 
-  const handleDeleteContact = (contactId) => {
+  const handleDeleteContact = contactId => {
     dispatch(removeContact(contactId));
   };
-
-  useEffect(() => {
-    // Обновляем Local Storage после каждого изменения контактов
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <div className="book_section">

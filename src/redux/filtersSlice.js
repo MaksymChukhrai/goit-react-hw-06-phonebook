@@ -14,11 +14,11 @@ const filtersSlice = createSlice({
           payload: value,
         };
       },
-    }
-  }
+    },
+  },
 });
 
 export const filtersReducer = filtersSlice.reducer;
 export const { setFilter } = filtersSlice.actions;
 
-export default filtersSlice.reducer.default;
+export default filtersSlice.reducer;

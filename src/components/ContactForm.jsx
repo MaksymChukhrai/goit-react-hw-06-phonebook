@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'; // Імпорт useDispatch
+import { useDispatch } from 'react-redux';
 import { addContact } from '../redux/contactsSlice'; // Імпорт екшен addContact
 
 const ContactForm = () => {
@@ -45,7 +45,5 @@ const ContactForm = () => {
     </form>
   );
 };
-
-
 
 export default ContactForm;

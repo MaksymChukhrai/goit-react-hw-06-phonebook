@@ -16,7 +16,10 @@ const contactsSlice = createSlice({
   },
   reducers: {
     addContact: (state, action) => {
-      state.list.push(action.payload);
+      state.list.push({
+        id: uuidv4(),
+        ...action.payload,
+      });
     },
     removeContact: (state, action) => {
       state.list = state.list.filter(contact => contact.id !== action.payload);
@@ -24,9 +27,16 @@ const contactsSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+    filterContacts: (state, action) => {
+      state.list = state.list.filter(contact =>
+        contact.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+    },
     updateContact: (state, action) => {
       const updatedContact = action.payload;
-      const index = state.list.findIndex(contact => contact.id === updatedContact.id);
+      const index = state.list.findIndex(
+        contact => contact.id === updatedContact.id
+      );
       if (index !== -1) {
         state.list[index] = updatedContact;
       }
@@ -35,7 +45,7 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const { addContact, removeContact, setFilter, updateContact }  = contactsSlice.actions;
+export const { addContact, removeContact, setFilter, updateContact } =
+  contactsSlice.actions;
 
 export default contactsSlice.reducer;
-

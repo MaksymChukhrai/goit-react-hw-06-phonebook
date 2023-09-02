@@ -29,9 +29,13 @@ code {
 
   align-items: flex-start;
 }
+.contact_list {
+  padding-left: 0px;
+}
 
 .contact_list li {
   margin-bottom: 10px;
+  list-style: none;
 }
 
 .delete-btn {
@@ -48,4 +52,7 @@ code {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+.li {
+  list-style: none;
 }
